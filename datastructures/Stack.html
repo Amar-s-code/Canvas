@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Stacks</title>
+    </head>
+    <body>
+        <h1>Stacks:</h1>
+        <p>Stacks like the name stands represent a datastructure where the items are arranged in a stack. A stack is an arrangement where the elements are
+            arranged on top of one another, a new element in this datastructure is placed on top of the last inserted element. Such that the last inserted
+            element always remains on top. Also when elements are arranged in a stack it is logical to remove them from the top so that the last inserted 
+            element would always be the one that is first removed.
+        </p>
+        <h2>Important points to remember:</h2>
+        <ul>
+            <li>Stacks implement <b>LIFO</b> last-in, first-out which means last inserted(last-in) element  would be the first removed(first-out). </li>
+            <li>Hence the <b>index of the last inserted element</b> is the <i>only thing that a stack has to keep track of</i>, lets call this index <b>'Top'</b>.</li>
+            <li>When an element is <b>removed</b> the operation is called <b>'Pop'</b>, it returns the removed element and update's the index position to <b>'Top-1'</b>.</li>
+            <li>When an element is <b>added</b> the operation is called <b>'Push'</b>, it updates the index position to <b>'Top+1'</b> and places the new element at this position.</li>
+            <li>We can implement a stack with an array of size 'n' and we track it's 'Top' index when 'Top' index is 0 the stack is empty and we check while poping off the elements
+                to see whether we are <b>popping off an empty stack</b> if so we return an error called <b>'underflow'</b>.
+            </li>
+        </ul>
+    </body>
+</html>
