@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="../stylesheets/prism.css" rel="stylesheet">
+        <link href="../stylesheets/stack.css" rel="stylesheet">
         <title>Stacks</title>
     </head>
     <body>
@@ -21,5 +23,105 @@
                 to see whether we are <b>popping off an empty stack</b> if so we return an error called <b>'underflow'</b>.
             </li>
         </ul>
+        <h3>A basic stack implementation and an <a href="https://leetcode.com/problems/min-stack/">easy problem</a> using stack from Leetcode</h3>
+        <div class="python-code">
+            <h4>Python3 Code</h4>
+            <pre>
+                <code class="language-python">
+                    class MinStack:
+
+                        def __init__(self):
+                            """
+                            initialize an empty array and a reference for the index of the top element in the stack.
+                            """
+                            self.stack = []
+                            self.topidx = 0        
+                    
+                        def empty(self) ->bool:
+                            if self.topidx==0:
+                                return True
+                            else:
+                                return False
+                    
+                        def push(self, x: int) -> None:
+                            self.topidx += 1
+                            self.stack.append(x)
+                    
+                        def pop(self) -> None:
+                            if not self.empty():
+                                self.stack.pop()
+                                self.topidx -= 1
+                            else:
+                                raise ValueError("Underflow")
+                    
+                        def top(self) -> int:
+                            return self.stack[self.topidx-1]         
+                    
+                        def getMin(self) -> int:
+                            return min(self.stack)
+                    
+                </code>
+            </pre>
+            <h4>Approach:</h4>
+            <p>In this implementation we create a class for the stack datatype in Python3, we initialize an empty array 'stack' and keep track of the top idx using 
+                'topidx' .
+               The two additional methods here are to get the top element in the stack using 'top' method and to get the minimum element in the stack using the 'getMin'
+               method. </p>
+        </div>
+        <div class="javascript-code">
+            <h4>Javascript Code</h4>
+            <pre>
+                <code class="language-javascript">
+                    /**
+                     * initialize your data structure here.
+                     */
+                    var MinStack = function() {
+                        this.stack = [];
+                        this.topidx = 0;
+                    };
+
+                    /**
+                    * @param {number} x
+                    * @return {void}
+                    */
+                    MinStack.prototype.push = function(x) {
+                        this.topidx +=1;
+                        this.stack.push(x);
+                    };
+
+                    /**
+                    * @return {void}
+                    */
+                    MinStack.prototype.pop = function() {
+                        this.stack.pop();
+                        this.topidx -= 1;
+
+                    };
+
+                    /**
+                    * @return {number}
+                    */
+                    MinStack.prototype.top = function() {
+                        return this.stack[this.topidx-1]
+                    };
+
+                    /**
+                    * @return {number}
+                    */
+                    MinStack.prototype.getMin = function() {
+                        let copy = this.stack.slice();
+                        let sorted = copy.sort((a,b)=>a-b);
+                        return sorted[0];
+                    };
+
+                </code>
+            </pre>
+            <h4>Approach:</h4>
+            <p>
+                The Approach is very much similar to the python code but the sorting carried out to find the minimum is much complex we clone the array used,
+                and then we sort the array to get the minimum from the sorted array.
+            </p>
+        </div>
+        <script src="../scripts/prism.js"></script>
     </body>
 </html>
