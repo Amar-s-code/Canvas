@@ -23,104 +23,185 @@
                 to see whether we are <b>popping off an empty stack</b> if so we return an error called <b>'underflow'</b>.
             </li>
         </ul>
-        <h3>A basic stack implementation and an <a href="https://leetcode.com/problems/min-stack/">easy problem</a> using stack from Leetcode</h3>
-        <div class="python-code">
-            <h4>Python3 Code</h4>
-            <pre>
-                <code class="language-python">
-                    class MinStack:
+        <h2>Problems</h2>
+        <div>            
+            <h3>A basic stack implementation and an <a href="https://leetcode.com/problems/min-stack/">easy problem</a> using stack from Leetcode</h3>
+            <div class="python-code">
+                <h4>Python3 Code</h4>
+                <pre>
+                    <code class="language-python">
+                        class MinStack:
 
-                        def __init__(self):
-                            """
-                            initialize an empty array and a reference for the index of the top element in the stack.
-                            """
-                            self.stack = []
-                            self.topidx = 0        
-                    
-                        def empty(self) ->bool:
-                            if self.topidx==0:
-                                return True
-                            else:
-                                return False
-                    
-                        def push(self, x: int) -> None:
-                            self.topidx += 1
-                            self.stack.append(x)
-                    
-                        def pop(self) -> None:
-                            if not self.empty():
-                                self.stack.pop()
-                                self.topidx -= 1
-                            else:
-                                raise ValueError("Underflow")
-                    
-                        def top(self) -> int:
-                            return self.stack[self.topidx-1]         
-                    
-                        def getMin(self) -> int:
-                            return min(self.stack)
-                    
-                </code>
-            </pre>
-            <h4>Approach:</h4>
-            <p>In this implementation we create a class for the stack datatype in Python3, we initialize an empty array 'stack' and keep track of the top idx using 
-                'topidx' .
-               The two additional methods here are to get the top element in the stack using 'top' method and to get the minimum element in the stack using the 'getMin'
-               method. </p>
-        </div>
-        <div class="javascript-code">
-            <h4>Javascript Code</h4>
-            <pre>
-                <code class="language-javascript">
-                    /**
-                     * initialize your data structure here.
-                     */
-                    var MinStack = function() {
-                        this.stack = [];
-                        this.topidx = 0;
-                    };
+                            def __init__(self):
+                                """
+                                initialize an empty array and a reference for the index of the top element in the stack.
+                                """
+                                self.stack = []
+                                self.topidx = 0        
+                        
+                            def empty(self) ->bool:
+                                if self.topidx==0:
+                                    return True
+                                else:
+                                    return False
+                        
+                            def push(self, x: int) -> None:
+                                self.topidx += 1
+                                self.stack.append(x)
+                        
+                            def pop(self) -> None:
+                                if not self.empty():
+                                    self.stack.pop()
+                                    self.topidx -= 1
+                                else:
+                                    raise ValueError("Underflow")
+                        
+                            def top(self) -> int:
+                                return self.stack[self.topidx-1]         
+                        
+                            def getMin(self) -> int:
+                                return min(self.stack)
+                        
+                    </code>
+                </pre>
+                <h4>Approach:</h4>
+                <p>In this implementation we create a class for the stack datatype in Python3, we initialize an empty array 'stack' and keep track of the top idx using 
+                    'topidx' .
+                The two additional methods here are to get the top element in the stack using 'top' method and to get the minimum element in the stack using the 'getMin'
+                method. </p>
+            </div>
+            <div class="javascript-code">
+                <h4>Javascript Code</h4>
+                <pre>
+                    <code class="language-javascript">
+                        /**
+                        * initialize your data structure here.
+                        */
+                        var MinStack = function() {
+                            this.stack = [];
+                            this.topidx = 0;
+                        };
 
-                    /**
-                    * @param {number} x
-                    * @return {void}
-                    */
-                    MinStack.prototype.push = function(x) {
-                        this.topidx +=1;
-                        this.stack.push(x);
-                    };
+                        /**
+                        * @param {number} x
+                        * @return {void}
+                        */
+                        MinStack.prototype.push = function(x) {
+                            this.topidx +=1;
+                            this.stack.push(x);
+                        };
 
-                    /**
-                    * @return {void}
-                    */
-                    MinStack.prototype.pop = function() {
-                        this.stack.pop();
-                        this.topidx -= 1;
+                        /**
+                        * @return {void}
+                        */
+                        MinStack.prototype.pop = function() {
+                            this.stack.pop();
+                            this.topidx -= 1;
 
-                    };
+                        };
 
-                    /**
-                    * @return {number}
-                    */
-                    MinStack.prototype.top = function() {
-                        return this.stack[this.topidx-1]
-                    };
+                        /**
+                        * @return {number}
+                        */
+                        MinStack.prototype.top = function() {
+                            return this.stack[this.topidx-1]
+                        };
 
-                    /**
-                    * @return {number}
-                    */
-                    MinStack.prototype.getMin = function() {
-                        let copy = this.stack.slice();
-                        let sorted = copy.sort((a,b)=>a-b);
-                        return sorted[0];
-                    };
+                        /**
+                        * @return {number}
+                        */
+                        MinStack.prototype.getMin = function() {
+                            let copy = this.stack.slice();
+                            let sorted = copy.sort((a,b)=>a-b);
+                            return sorted[0];
+                        };
 
-                </code>
-            </pre>
-            <h4>Approach:</h4>
-            <p>
-                The Approach is very much similar to the python code but the sorting carried out to find the minimum is much complex we clone the array used,
-                and then we sort the array to get the minimum from the sorted array.
-            </p>
+                    </code>
+                </pre>
+                <h4>Approach:</h4>
+                <p>
+                    The Approach is very much similar to the python code but the sorting carried out to find the minimum is much complex we clone the array used,
+                    and then we sort the array to get the minimum from the sorted array.
+                </p>
+            </div>
+            <div>
+                <h3>This a medium stack <a href="https://leetcode.com/problems/validate-stack-sequences/">problem number 946. Validate Stack Sequences</a> from leetcode</h3>
+                <div class="python-code">
+                    <h4>Python code</h4>
+                    <pre>
+                        <code class="language-python">
+                            class Solution:
+                                def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+                                    stack = Stack()
+                                    pop_strt = False #Flag to check if we had started poping
+                                    pop_end = False  #Flag to check whether we had reached end of 'popped' list
+                                    push_end = False #Flag to check if we had reached end of 'pushed' list
+                                    if len(pushed)==0: #This is to check the corner case when the two 'pushed' and 'popped' lists are empty
+                                        return True
+                                    while not pop_end: #Continue poping until the end of 'popped' list
+                                        stack.push(pushed.pop(0)) #push to the stack from the 'pushed' list
+                                        if stack.stack[stack.topidx-1]==popped[0]: # Keep pushing until there's a need to pop
+                                            pop_strt = True 
+                                        while pop_strt and not pop_end: #Pop has started but not ended
+                                            if not push_end: #Check if 'pushed' list is empty
+                                                if len(stack.stack)!=0 and stack.stack[stack.topidx-1]==popped[0]: #Check if stack is empty and if the top element in stack and in 'popped' list are same
+                                                    stack.pop() #If so pop em off
+                                                    popped.pop(0)
+                                                    if len(pushed)==0: #Check if 'pushed' list is empty
+                                                        push_end=True
+                                                elif len(stack.stack)==0: #If stack alone is empty
+                                                    stack.push(pushed.pop(0)) #Push to stack
+                                                    if len(pushed)==0:  #Check if 'pushed' list is empty
+                                                        push_end=True
+                                                elif stack.stack[stack.topidx-1]!=popped[0]:
+                                                    stack.push(pushed.pop(0))  #Push to stack
+                                                    if len(pushed)==0: #Check if 'pushed' list is empty
+                                                        push_end=True
+                                            else: #Reached end of 'popped' list
+                                                if len(stack.stack)==0 and len(popped)==0: # Check If both the lists are empty 
+                                                    return True
+                                                elif stack.stack[stack.topidx-1]==popped[0]: #If the top element on the stack and the 'popped' lists match
+                                                    stack.pop() #pop em off
+                                                    popped.pop(0)
+                                                    if len(popped)==0:
+                                                        pop_end = True
+                                                else: #If there's a mismatch return fail
+                                                    return False                
+                                    return True #If it has passed through the entire checks return pass
+        
+    
+                            class Stack:
+                                def __init__(self):
+                                    self.stack=[]
+                                    self.topidx = 0
+                                
+                                def push(self,x):
+                                    self.topidx +=1
+                                    self.stack.append(x)
+                                
+                                def pop(self):
+                                    self.topidx -=1
+                                    self.stack.pop()
+                        </code>
+                    </pre>
+                    <h4>Approach</h4>
+                    <p>
+                        <ul>
+                        <li>The problem there is an empty stack given and given two lists which give push elements through 'pushed' list and pop elements through 'popped' list</li>
+                        <li>we check whether any permutation of push and pop opertations is possible give the constraints.</li>
+                        <li>The approach taken here is to use flags to indicate the states of progress in the push and pop operations of the two lists.</li>
+                        <li>The main while loop checks whether we had reached the end of the 'popped' list which indicates that we permutation of push and pop operations is possible.</li>
+                        <li>Inside the while loop as the stack is empty in the begining we have to add elements to it and we will not pop until the element at the top of our stack 
+                        and the 'popped' list is same. If it starts we set the 'pop_strt' flag to True.</li>
+                        <li>When 'pop_strt' is True we move to the next stage which is until the 'popped' list is empty inside this we check for two cases whether we had reached the 
+                        end of 'pushed' list.</li>
+                        <li>If we had reached the end of 'pushed' list then we only do poping if it fails here we return fail.</li>
+                        <li>If not we check for cases whether stack is empty and the top elements of both the stack and popped lists are empty</li>
+                        <li>If so we just push the elements.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
         </div>
         <script src="../scripts/prism.js"></script>
     </body>
