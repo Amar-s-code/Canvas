@@ -1,7 +1,9 @@
 import gzip
 import numpy as np
 
-
+"""
+TO-DO: Make the urls directly download from the website and proceed
+"""
 def load_data(out="train"):
     dim_images = 28
     if out=="test":
