@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link href="../stylesheets/prism.css" rel="stylesheet">
+    <title>BinaryTree</title>    
+</head>
+<body>
+    <h1>Binary Tree</h1>
+    <ul>
+        <li>A binary tree as the name suggests is a <b>tree</b> datastructure</li>
+        <li>The tree datastructure in general consists of nodes arranged in a <b>hierarchial parent-to-child relationship</b></li>
+        <li>The binary tree is a special case of the tree datastructure in that it contains atmost two children</li>
+        <li>The left child of any node has its max value atmost to that of its parent node</li>
+        <li>The right child of any node has a min value atleast to that of its parent node</li>
+        <li>There can be different binary structure arrangements for the same set of elements</li>
+        <li>The binary tree can be used to represent dynamic set and dictionary structure and its operations such as insert,delete,max,min</li>
+    </ul>
+    <h2>Problems:</h2>
+    <div>
+        <h3>Leetcode june challenge problem 1 <a href="https://leetcode.com/explore/challenge/card/june-leetcoding-challenge/539/week-1-june-1st-june-7th/3347/">Invert a binary tree</a></h3>
+        <div class="python-code">
+            <h4>Python code</h4>
+            <pre>
+                <code class="language-python">
+                    # Definition for a binary tree node.
+                    # class TreeNode:
+                    #     def __init__(self, val=0, left=None, right=None):
+                    #         self.val = val
+                    #         self.left = left
+                    #         self.right = right
+                    class Solution:
+                        def invertTree(self, root: TreeNode) -> TreeNode:
+                            if root!=None:
+                                queue = []
+                                queue.append(root)
+                                while len(queue)!=0:
+                                    curr_node = queue.pop(0)
+                                    if curr_node.left==None and curr_node.right==None:
+                                        continue
+                                    if curr_node.left!=None:
+                                        queue.append(curr_node.left)
+                                    if curr_node.right!=None:
+                                        queue.append(curr_node.right)
+                                    temp = curr_node.right
+                                    curr_node.right = curr_node.left
+                                    curr_node.left = temp
+                                return root
+                            return root
+                </code>
+            </pre>
+            
+            <h4>Approach:</h4>
+            <ol>
+                <li>To invert the binary tree we have to make all the right elements of a node to the left node and vice versa</li>
+                <li>We have a queue which provides us with the nodes that we need to go through, if this is empty it means we are done going through our binary tree</li>
+                <li>To start we add the root node to our queue, at each iteration we add pop of the element at the front of the queue and for elements which have children we add the children to the queue</li>
+                <li>We swap the left and right elements of a node during the given iteration</li>
+            </ol>
+        </div>
+    </div>
+    <script src="../scripts/prism.js"></script>
+</body>
