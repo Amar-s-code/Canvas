@@ -48,7 +48,49 @@
                             return root
                 </code>
             </pre>
-            
+            <div class="javascript-code">
+                <h4>Javascript Code</h4>
+                <pre>
+                    <code class="language-javascript">
+                        /**
+                        * Definition for a binary tree node.
+                        * function TreeNode(val, left, right) {
+                        *     this.val = (val===undefined ? 0 : val)
+                        *     this.left = (left===undefined ? null : left)
+                        *     this.right = (right===undefined ? null : right)
+                        * }
+                        */
+                       /**
+                        * @param {TreeNode} root
+                        * @return {TreeNode}
+                        */
+                       var invertTree = function(root) {
+                           if(root!==null){
+                               let queue = [];
+                               queue.push(root);
+                               while(queue.length !== 0){
+                                   curr_node = queue.pop();
+                                   if(curr_node.left===null && curr_node.right===null){
+                                       continue;                
+                                   }
+                                   if(curr_node.left!==null){
+                                       queue.push(curr_node.left);
+                                   }
+                                   if(curr_node.right!==null){
+                                       queue.push(curr_node.right);
+                                   }
+                                   temp = curr_node.right
+                                   curr_node.right = curr_node.left;
+                                   curr_node.left = temp;            
+                               }
+                               return root;
+                           }
+                           return root;                          
+                       };
+                    </code>
+                </pre>
+            </div>
+            <div>
             <h4>Approach:</h4>
             <ol>
                 <li>To invert the binary tree we have to make all the right elements of a node to the left node and vice versa</li>
@@ -56,6 +98,7 @@
                 <li>To start we add the root node to our queue, at each iteration we add pop of the element at the front of the queue and for elements which have children we add the children to the queue</li>
                 <li>We swap the left and right elements of a node during the given iteration</li>
             </ol>
+            </div>
         </div>
     </div>
     <script src="../scripts/prism.js"></script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link href="../stylesheets/prism.css" rel="stylesheet">
+    <title>Singly Linked List</title>
+</head>
+<body>
+    <div>
+        <h3>Leetcode june challenge problem 2 <a href="https://leetcode.com/explore/challenge/card/june-leetcoding-challenge/539/week-1-june-1st-june-7th/3348/">Delete node in a Singly Linked List</a></h3>
+        <div class="python-code">
+            <h4>Python code</h4>
+            <pre>
+                <code class="language-python">
+                    # Definition for singly-linked list.
+                    # class ListNode:
+                    #     def __init__(self, x):
+                    #         self.val = x
+                    #         self.next = None
+
+                    class Solution:
+                        def deleteNode(self, node):
+                            """
+                            :type node: ListNode
+                            :rtype: void Do not return anything, modify node in-place instead.
+                            """
+                            node.val = node.next.val
+                            node.next = node.next.next
+                </code>
+            </pre>
+            <div class="javascript-code">
+                <h4>Javascript Code</h4>
+                <pre>
+                    <code class="language-javascript">
+                        /**
+                        * Definition for singly-linked list.
+                        * function ListNode(val) {
+                        *     this.val = val;
+                        *     this.next = null;
+                        * }
+                        */
+                        /**
+                        * @param {ListNode} node
+                        * @return {void} Do not return anything, modify node in-place instead.
+                        */
+                        var deleteNode = function(node) {
+                            node.val = node.next.val
+                            node.next = node.next.next
+                        };
+                    </code>
+                </pre>
+     
+            </div>            
+            <h4>Approach:</h4>
+            <ol>
+                <li>To delete a node we simply have to change the node to be the next node.</li>
+                <li>We change the value of the node to the value of the next node</li>
+                <li>We remove its next pointer reference by making it the next pointer of the actual next node</li>
+            </ol>
+        </div>
+
+    <script src="../scripts/prism.js"></script>
+</body>
