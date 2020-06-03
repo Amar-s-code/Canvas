@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link href="../stylesheets/prism.css" rel="stylesheet">
+    <title>Arrays</title>
+</head>
+<body>
+    <h1>Arrays</h1>
+    <ul>
+        <li>Arrays are sequential containers in which elements are stored and retrieved based on an indexing</li>
+        <li>It's linear as in the indexes are in an incremental fashion</li>
+    </ul>
+    <div>
+        <h3>Leetcode june challenge problem 3 <a href="https://leetcode.com/explore/challenge/card/june-leetcoding-challenge/539/week-1-june-1st-june-7th/3349/">Two City Scheduling</a></h3>
+        <p>
+            There are 2N people a company is planning to interview. The cost of flying the i-th person to city A is costs[i][0], and the cost of flying the i-th person to city B is costs[i][1].
+
+            Return the minimum cost to fly every person to a city such that exactly N people arrive in each city.
+            <p>
+            <b>Note:</b>
+            <ol>
+                <li>1 <= costs.length <= 100</li>
+                <li>It is guaranteed that costs.length is even.</li>
+                <li>1 <= costs[i][0], costs[i][1] <= 1000</li>
+            </ol>
+            </p>
+        </p>
+        <div class="python-code">
+            <h4>Python code</h4>
+            <pre>
+                <code class="language-python">
+                    class Solution:
+                        def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+                            costs.sort(key=lambda cost:abs(cost[1]-cost[0]),reverse=True)
+                            a = 0
+                            b = 0
+                            val = 0
+                            for cost in costs:
+                                if a < int(len(costs)/2) and b < int(len(costs)/2): 
+                                    min_val = min(cost)
+                                    min_idx = cost.index(min_val)
+                                    if min_idx==0:
+                                        a+=1
+                                    else:
+                                        b+=1
+                                    val += min_val
+                                elif a==int(len(costs)/2):
+                                    b+=1
+                                    val+= cost[1]
+                                elif b==int(len(costs)/2):
+                                    a+=1
+                                    val+=cost[0]                 
+                            return val
+                </code>
+            </pre>
+         <div>
+        <div class="javascript-code">
+            <h4>Javascript Code</h4>
+            <pre>
+                <code class="language-javascript">
+                    var twoCitySchedCost = function(costs) {
+                        costs.sort(function(a,b){return Math.abs(a[0]-a[1])-Math.abs(b[0]-b[1])}).reverse();
+                        let a=0,b=0,val = 0;
+                        for(cost in costs){
+                            if(a < (costs.length/2) && b < (costs.length/2)){
+                                let min_val=0,min_idx=0;
+                                min_val = Math.min(...costs[cost]);
+                                min_idx = costs[cost].indexOf(min_val);
+                                if(min_idx === 0){
+                                    a+=1;
+                                }else{
+                                    b+=1;
+                                }
+                                val +=  min_val;
+                            }else if(a==costs.length/2){
+                                 b+=1;
+                                 val+=costs[cost][1];
+                            }else if(b==costs.length/2){
+                                a+=1;
+                                val+=costs[cost][0];
+                            }
+                        }
+                        return(val);
+                    };
+                </code>
+            </pre>
+        </div>
+        <div>
+            <h4>Approach:</h4>
+            <ul>
+                <li>We can think of picking values from two corresponding lists with two conditions:
+                    <ul>
+                        <li>we need to pick half the elements for the sum from one and the other half from the other list</li>
+                        <li>if an element is picked from one of the lists then we cannot pick the element at the corresponding position from the other list</li>
+                    </ul>
+                </li>
+                <li>Here the two lists are provided such that they're in a list of lists where the internal list contains the elements from both the lists at a 
+                    particular position.</li>
+                <li>So lets sort the 'costs' list using with the difference between the corresponding elements of the two lists and place them in descending order</li>   
+                <li>We need to keep of the elements added to the minimum value from the lists,let's name the lists as 'a' and 'b' to keep track of indices</li> 
+                <li>We will just iterate through the sorted costs list fetching the minimum and updating the corresponding indices 'a' or 'b' as we go along</li> 
+                <li>When we had reached the selecting the possible minimum elements from either of the lists be it 'a' or 'b' we'll just have to pick the rest from 
+                    the other element
+                </li>
+            </ul>
+        </div> 
+        <script src="../scripts/prism.js"></script>               
+</body>
