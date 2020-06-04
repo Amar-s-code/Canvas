@@ -1,2 +1,2 @@
-neural_networks/*.py linguist-language=Python
-stylesheets/*.css linguist-language=CSS
+neural_networks/*.py linguist-detectable=false
+stylesheets/*.css linguist-detectable=false
