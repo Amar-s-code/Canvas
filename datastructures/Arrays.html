@@ -53,7 +53,7 @@
                             return val
                 </code>
             </pre>
-         <div>
+        <div>
         <div class="javascript-code">
             <h4>Javascript Code</h4>
             <pre>
@@ -103,6 +103,73 @@
                     the other element
                 </li>
             </ul>
-        </div> 
+        </div>
+    </div>
+    <div>
+        <h3>Leetcode june challenge problem 4 <a href="https://leetcode.com/explore/challenge/card/june-leetcoding-challenge/539/week-1-june-1st-june-7th/3350/">Reverse a String</a></h3>
+        <p>
+            Write a function that reverses a string. The input string is given as an array of characters char[].
+
+            Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+            You may assume all the characters consist of printable ascii characters.
+        </p>
+        <div class="python-code">
+            <h4>Python code</h4>
+            <pre>
+                <code class="language-python">
+                    class Solution:
+                    def reverseString(self, s: List[str]) -> None:
+                        """
+                        Do not return anything, modify s in-place instead.
+                        """
+                        s.reverse()
+                        """
+                        f_ptr = 0
+                        b_ptr = len(s)-1
+                        while f_ptr< int(len(s)/2):
+                            temp = s[f_ptr]
+                            s[f_ptr] = s[b_ptr]
+                            s[b_ptr] = temp
+                            f_ptr +=1
+                            b_ptr -=1
+                        """
+                </code>
+            </pre>
+        <div>
+        <div class="javascript-code">
+            <h4>Javascript Code</h4>
+            <pre>
+                <code class="language-javascript">
+                    /**
+                    * @param {character[]} s
+                    * @return {void} Do not return anything, modify s in-place instead.
+                    */
+                   var reverseString = function(s) {
+                       s.reverse();
+                       /**
+                       *
+                       *let f_ptr=0,b_ptr=s.length-1;
+                       *while(f_ptr < s.length/2){
+                       *    let temp = s[f_ptr];
+                       *    s[b_ptr] = temp;
+                       *    f_ptr +=1;
+                       *    b_ptr +=1;
+                       *}
+                       ***/
+                   };
+                </code>
+            </pre>
+        </div>
+        <div>
+            <h4>Approach:</h4>
+            <ul>
+                <li>We can do a simple two pointer approach.</li>
+                <li>One at the begining of the array and the other at the end at each iteration we swap elements and increment the front pointer and decrement the back pointer</li>
+                <li>Do This until we reach the middle of the list.</li>
+                <li>Else, we can simply call the built-in reverse method for arrays</li>
+            </ul>
+        </div>
+    </div> 
         <script src="../scripts/prism.js"></script>               
 </body>
